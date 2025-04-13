@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Wanderlust - Travel Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .about-container {
+            background: url('travell.png');
+            background-size: cover;
+            background-position: center; 
+            top: 120px;
+            position: relative;
+            padding: 30px;
+            width: 60%;
+            margin: 30px auto;
+            border-radius: 30px;
+            text-align: center;
+            color: #0a0101;
+            text-weight: 300;
+            font-weight: bolder;
+            font-size: 1 rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .about-container h2 {
+            color: #204560;
+            text-decoration: underline;
+            text-underline-position: under;
+            margin-bottom: 20px;
+        }
+        
+        .about-container p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+           
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">Wanderlust</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" id="planner-btn">Planner</a>
+                    <ul class="dropdown-menu" id="planner-menu">
+                        <li><a href="trip.html">Trip Overview</a></li>
+                        <li><a href="expense.html">Expense Tracker</a></li>
+                        <li><a href="todo.html">To-do List</a></li>
+                    </ul>
+                </li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="about-container">
+        <h2>About Wanderlust</h2>
+        <p>Wanderlust is your ultimate travel planning companion, designed to make trip organization effortless and enjoyable. Our mission is to simplify travel planning so you can focus on the adventure ahead.</p>
+        
+        <p>With Wanderlust, you can:</p>
+        <ul style="text-align: left; margin-left: 20px;">
+            <li>Plan and organize your trips with our intuitive overview</li>
+            <li>Track expenses to stay within your budget</li>
+            <li>Manage tasks with our to-do list</li>
+            <li>Explore destinations with our interactive map</li>
+        </ul>
+        
+        <p>Whether you're planning a weekend getaway or a month-long adventure, Wanderlust helps you stay organized every step of the way.</p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

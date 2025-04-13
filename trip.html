@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust - Planner</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+           
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">Wanderlust</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" id="planner-btn">Planner</a>
+                    <ul class="dropdown-menu" id="planner-menu">
+                        <li><a href="trip.html">Trip Overview</a></li>
+                        <li><a href="expense.html">Expense Tracker</a></li>
+                        <li><a href="todo.html">To-do List</a></li>
+                    </ul>
+                </li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="trip-summary">
+        <h2>Trip Summary</h2>
+        <div class="summary-form">
+            <input type="text" id="trip-name" placeholder="Trip Name">
+            <input type="date" id="start-date">
+            <input type="date" id="end-date">
+            <input type="text" id="duration" placeholder="Duration" readonly>
+            <input type="number" id="people" placeholder="People">
+            <button class="add-btn" id="add-trip">Add</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Duration</th>
+                    <th>People</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="trip-table">
+
+            </tbody>
+        </table>
+    </section>
+
+    <script>
+        const tripTable = document.getElementById('trip-table');
+        const addTripButton = document.getElementById('add-trip');
+
+        addTripButton.addEventListener('click', () => {
+            const tripName = document.getElementById('trip-name').value;
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+            const duration = document.getElementById('duration').value;
+            const people = document.getElementById('people').value;
+
+            if (tripName && startDate && endDate && people) {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${tripName}</td>
+                    <td>${startDate} - ${endDate}</td>
+                    <td>${duration}</td>
+                    <td>${people}</td>
+                    <td><button class="delete-btn">Delete</button></td>
+                `;
+
+                tripTable.appendChild(row);
+
+                // Clear input fields
+                document.getElementById('trip-name').value = '';
+                document.getElementById('start-date').value = '';
+                document.getElementById('end-date').value = '';
+                document.getElementById('duration').value = '';
+                document.getElementById('people').value = '';
+
+                // Add delete functionality
+                row.querySelector('.delete-btn').addEventListener('click', () => {
+                    row.remove();
+                });
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+        // Calculate duration when dates are selected
+        document.getElementById('start-date').addEventListener('change', calculateDuration);
+        document.getElementById('end-date').addEventListener('change', calculateDuration);
+
+        function calculateDuration() {
+            const startDate = new Date(document.getElementById('start-date').value);
+            const endDate = new Date(document.getElementById('end-date').value);
+
+            if (startDate && endDate && endDate >= startDate) {
+                const timeDiff = endDate - startDate;
+                const days = timeDiff / (1000 * 60 * 60 * 24) + 1; // Include start day
+                document.getElementById('duration').value = `${days} days`;
+            } else {
+                document.getElementById('duration').value = '';
+            }
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
